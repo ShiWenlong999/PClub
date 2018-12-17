@@ -41,6 +41,7 @@ public class Regist extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		RegistJdbc rjdbc = new RegistJdbc();
+		//捕捉异常
 		try {
 			String res = rjdbc.regist(username, password);
 			response.getWriter().write(res);
