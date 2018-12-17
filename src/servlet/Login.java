@@ -9,19 +9,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import jdbc.RegistJdbc;
+import jdbc.LoginJdbc;
 
 /**
- * Servlet implementation class Regist
+ * Servlet implementation class Login
  */
-@WebServlet("/Regist")
-public class Regist extends HttpServlet {
+@WebServlet("/Login")
+public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Regist() {
+    public Login() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,27 +30,25 @@ public class Regist extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request,response);
+		doPost(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setHeader("Content-type", "text/html;charset=UTF-8");//设置乱码
-		String username = request.getParameter("username");//获取请求参数
+		String account = request.getParameter("account");//获取前端请求的参数
 		String password = request.getParameter("password");
-		RegistJdbc rjdbc = new RegistJdbc();//创建对象
-		//捕捉异常
+		
+		LoginJdbc jj = new LoginJdbc();//创建LoginJdbc对象，为了用它的方法
+		String flag="0";
 		try {
-			String res = rjdbc.regist(username, password);//调用方法，获取返回参数
-			response.getWriter().write(res);//响应给前端
+			flag = jj.login(account, password);
+			response.getWriter().write(flag);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
-		//response.getWriter().write("呀呀呀！");
+		}//调用jdbc方法，返回参数
 	}
 
 }
