@@ -13,7 +13,7 @@ public class LoginJdbc {
 		//获取statement
 		Statement stat = conn.createStatement();
 		//利用statement执行sql语句
-		ResultSet rest = stat.executeQuery("select count(*) from user where name='"+account+"' and pass='"+password+"'");
+		ResultSet rest = stat.executeQuery("select count(*) from user where phone='"+account+"' and password='"+password+"'");
 		int a=0;
 		while (rest.next()) {
 			a = rest.getInt(1);

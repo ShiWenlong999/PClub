@@ -11,14 +11,14 @@ public class RegistJdbc {
 		Connection conn = JdbcUtils.getConnection();
 		Statement stat = conn.createStatement(); //statement接口作用是执行SQL语句，可以获取查询结果集。
 		//boolean execute = stat.execute("insert into user (name,pass) values('"+username+"','"+password+"')");
-		int res = stat.executeUpdate("insert into user (name,pass) values('"+username+"','"+password+"')");
+		int res = stat.executeUpdate("insert into user (phone,password) values('"+username+"','"+password+"')");
 		
 		return res+"";
 	}
 	public String selUsername(String username) throws SQLException{
 		Connection conn = JdbcUtils.getConnection();
 		Statement stat = conn.createStatement(); //statement接口作用是执行SQL语句，可以获取查询结果集。
-		ResultSet rest = stat.executeQuery("select count(*) from user where name='"+username+"'");
+		ResultSet rest = stat.executeQuery("select count(*) from user where phone='"+username+"'");
 		int a=0;
 		while (rest.next()) {
 			a = rest.getInt(1);
