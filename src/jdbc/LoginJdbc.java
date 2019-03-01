@@ -17,7 +17,6 @@ public class LoginJdbc {
 		int a=0;
 		while (rest.next()) {
 			a = rest.getInt(1);
-			
 		}
 		return a+"";
 	}

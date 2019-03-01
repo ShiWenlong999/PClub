@@ -34,7 +34,7 @@
 			<input type="password" id="password"/><br /><br />
 			<button  class="btn" onclick="login()"><font color="white">登  陆</font></button>
 		</div>
-		
+		<script type="text/javascript"  src="js/jquery-1.4.2.min.js" ></script>
 		<script type="text/javascript">
 			function login(){
 				
@@ -44,16 +44,24 @@
 					alert("账号密码不能为空!");
 					return;
 				}
-			
-				var n1 = user.name;
-	            var p1 = user.password;
-	            if(n1==name && p1==pass){
-	                location.href="42-1.html";
-	            }else{
-	                alert("账号或密码错误！请重新输入")
-	                $("#name").val("");
-	                $("#password").val("");		
-	                }     	    	   	
+				
+				if(name.indexOf("admin")==-1){
+					alert("请使用管理员账户登陆！");
+					return;
+				}
+				$.ajax({
+					type:"POST",
+					url:"login",
+					data:{account:name,password:pass},                 
+					success:function(res){
+						if(res=='1'){
+							window.location.href="index.html";
+						}else{
+							alert("密码错误！");
+						 $("#password").val("");
+						}
+						}   	    	   	
+					});
 				
 			}
 			
