@@ -7,6 +7,7 @@ import java.sql.Statement;
 
 public class LoginJdbc {
 
+	//登陆方法
 	public String login(String account,String password) throws SQLException {
 		//利用jdbc工具得到connection
 		Connection conn = JdbcUtils.getConnection();

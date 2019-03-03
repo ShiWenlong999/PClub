@@ -37,28 +37,30 @@
 		<script type="text/javascript"  src="js/jquery-1.4.2.min.js" ></script>
 		<script type="text/javascript">
 			function login(){
-				
+				//获取到账号密码，判断是否为空
 				var name = $("#name").val();
 				var pass = $("#password").val();
 				if(name=="" || pass==""){
 					alert("账号密码不能为空!");
 					return;
 				}
-				
+				//规定管理员账号是admin,非管理员不能登陆，拦截
 				if(name.indexOf("admin")==-1){
 					alert("请使用管理员账户登陆！");
 					return;
 				}
+				//通过ajax发送到后台验证密码
 				$.ajax({
 					type:"POST",
 					url:"login",
 					data:{account:name,password:pass},                 
 					success:function(res){
+						//返回1，成功
 						if(res=='1'){
 							window.location.href="index.html";
 						}else{
 							alert("密码错误！");
-						 $("#password").val("");
+						 $("#password").val("");//密码错误就清空密码栏
 						}
 						}   	    	   	
 					});

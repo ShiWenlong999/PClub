@@ -14,7 +14,7 @@
     <!-- Custom Styles-->
     <link href="../assets/css/custom-styles.css" rel="stylesheet" />
     <!-- Google Fonts-->
-    <link href='http://fonts.useso.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <!-- <link href='http://fonts.useso.com/css?family=Open+Sans' rel='stylesheet' type='text/css' /> -->
 </head>
 
 <body>
@@ -62,7 +62,7 @@
                         <a class="active-menu" href="#"><i class="fa fa-desktop"></i> 课程管理<span class="fa arrow"></span></a>
                     	<ul class="nav nav-second-level collapse in">
                             <li>
-                                <a href="activeCourse.html">新增课程</a>
+                                <a href="addCourse.html">新增课程</a>
                             </li>
                             <li>
                                 <a href="updateCourse.html">修改课程</a>
@@ -116,13 +116,71 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h1 class="page-header">
-                            主题 <small>副标题</small>
+                            新增课程 <small></small>
                         </h1>
                     </div>
                 </div>
                 <!-- /. ROW  -->
-
-               
+					<div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            请输入新增课程的信息
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <form role="form">
+                                        <div class="form-group">
+                                            <label>课程名称</label><font color="red" >*</font>
+                                            <input id="cname" class="form-control" placeholder="请填入课程名称，不要超过十个字">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>课程价格</label><font color="red">*</font>
+                                            <input id="price" class="form-control" placeholder="请填入课程价格">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>指导教师</label>
+                                            <input id="teacher" class="form-control" placeholder="请填入课程指导教师名称">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>上课时间</label><font color="red">*</font>
+                                            <input id="date" class="form-control" placeholder="请填入授课时间">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>宣传语</label>
+                                            <input id="desc1" class="form-control" placeholder="请填入课程宣传语，不超过20字">
+                                        </div>
+                                        
+               						</form>
+               					</div>
+               					<!-- ============右侧部分============ -->
+               					<div class="col-lg-6">
+                                    <form role="form">
+                                       <div class="form-group">
+                                            <label>课程简介</label>
+                                            <textarea id="desc2" class="form-control" rows="3"></textarea>
+                                        </div>
+                                        <!-- <div class="form-group">
+                                            <label>图片1</label>
+                                            <input class="form-control" placeholder="请填入第一张图片的名称">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>图片2</label>
+                                            <input class="form-control" placeholder="请填入第二张图片的名称">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>图片3</label>
+                                            <input class="form-control" placeholder="请填入第二张图片的名称">
+                                        </div> -->
+               						</form>
+               					 <a href="javascript:AddCourse()" style="float: right;" class="btn btn-primary">提交新增</a>
+               					</div>
+               				</div>
+               			</div>
+               		</div>
+               	</div>
+              </div>
                 <!-- /. ROW  -->
             </div>
             <!-- /. PAGE INNER  -->
@@ -143,6 +201,46 @@
     <!-- Custom Js -->
     <script src="../assets/js/custom-scripts.js"></script>
 
+<!-- js代码 -->
+<script type="text/javascript">
+//点击提交按钮触发方法
+function AddCourse(){
+	//获取到用户输入的每一项内容
+	var cname = $("#cname").val();
+	var price = $("#price").val();
+	var teacher=$("#teacher").val();
+	var date =  $("#date").val();
+	var desc1 = $("#desc1").val();
+	var desc2 = $("#desc2").val();
+	
+	//判断必填项是否为空，
+	if(cname=="" || price=="" || date==""){
+		alert("请填写必填项内容！")
+		return;
+	}
+	//添加课程，ajax发送到后台
+	$.ajax({
+		type:"POST",
+		url:"../addCourse",
+		data:{cname:cname,price:price,teacher:teacher,date:date,desc1:desc1,desc2:desc2},                 
+		success:function(res){
+			if(res=="1"){
+				alert("新增课程成功！");
+				$("#cname").val("");  
+				$("#price").val("");  
+				$("#teacher").val("");
+				$("#date").val("");   
+				$("#desc1").val("");  
+				$("#desc2").val("");  
+			}else{
+				alert("新增失败，请重试。")
+			}
+		}
+	});
+	
+}
+
+</script>
 
 </body>
 

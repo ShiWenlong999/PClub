@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 public final class JdbcUtils {
     private static String driver="com.mysql.jdbc.Driver";
-    private static String url="jdbc:mysql://47.94.83.96:3306/PPCLUB";
+    private static String url="jdbc:mysql://47.94.83.96:3306/PPCLUB?useUnicode=true&characterEncoding=utf8";
     private static String user="root";
     private static String password="root";
     
