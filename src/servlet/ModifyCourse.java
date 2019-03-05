@@ -9,20 +9,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import jdbc.LoginJdbc;
-import jdbc.RegistJdbc;
+import jdbc.Course;
 
 /**
- * Servlet implementation class Regist
+ * Servlet implementation class ModifyCourse
  */
-@WebServlet("/Regist")
-public class Regist extends HttpServlet {
+@WebServlet("/ModifyCourse")
+public class ModifyCourse extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Regist() {
+    public ModifyCourse() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,33 +30,26 @@ public class Regist extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request,response);
+		doPost(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setHeader("Content-type", "text/html;charset=UTF-8");//设置乱码
-		String username = request.getParameter("username");//获取请求参数
-		String password = request.getParameter("password");
-		String name = request.getParameter("name");
-		RegistJdbc rjdbc = new RegistJdbc();//创建对象
-		//捕捉异常
+		//获取状态参数，
+		String state = request.getParameter("state");
+		String id = request.getParameter("id");
+		//创建Course jdbc对象以便调用里面的对应的方法
+		Course course = new Course();
+		
 		try {
-			String flag = rjdbc.selUsername(username);//先去查询一遍数据库里有没有存在这个账号，0：没有，1：有
-			if("0".equals(flag)) {//账号不存在，可以注册，
-				String res = rjdbc.regist(username, password,name);//调用注册方法，获取返回参数
-				response.getWriter().write(res);//响应给前端
-			}else {//账号已经存在，直接给前端返回0
-				response.getWriter().write("0");//响应给前端
-			}
+			String res = course.modify(id, state);//传参数，掉方法，返回结果
+			response.getWriter().write(res);//将结果送回前端
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		//response.getWriter().write("呀呀呀！");
 	}
 
 }

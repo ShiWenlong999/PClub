@@ -35,4 +35,31 @@
     <servlet-name>Addcourse</servlet-name>
     <url-pattern>/addCourse</url-pattern>
   </servlet-mapping>
+   <!-- 根据id查询课程 -->
+   <servlet>
+    <servlet-name>SelCourse</servlet-name>
+    <servlet-class>servlet.SelCourse</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelCourse</servlet-name>
+    <url-pattern>/selCourse</url-pattern>
+  </servlet-mapping>
+   <!-- 查询全部课程 -->
+   <servlet>
+    <servlet-name>SelAllCourse</servlet-name>
+    <servlet-class>servlet.SelAllCourse</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelAllCourse</servlet-name>
+    <url-pattern>/selAllCourse</url-pattern>
+  </servlet-mapping>
+   <!-- 修改课程状态 -->
+   <servlet>
+    <servlet-name>ModifyCourse</servlet-name>
+    <servlet-class>servlet.ModifyCourse</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModifyCourse</servlet-name>
+    <url-pattern>/modifyCourse</url-pattern>
+  </servlet-mapping>
 </web-app>
