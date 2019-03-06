@@ -38,7 +38,7 @@ public class Regist extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setHeader("Content-type", "text/html;charset=UTF-8");//处理乱码。因为使用Ajax传递中文参数，如果不对参数进行处理的话，传到后台会变成乱码
+		response.setHeader("Content-type", "text/html;charset=UTF-8");//处理乱码。因为传递中文参数，如果不对参数进行处理的话，传到前端会变成乱码
 		String username = request.getParameter("username");//获取请求参数
 		String password = request.getParameter("password");
 		String name = request.getParameter("name");

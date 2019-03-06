@@ -1,22 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
   <display-name>PClub</display-name>
-  <!-- 首页 -->
   <welcome-file-list>
     <welcome-file>login.html</welcome-file>
   </welcome-file-list>
-  
-  <!-- 注册servlet -->
   <servlet>
-    <servlet-name>regist</servlet-name><!-- 名字和下面的name保持一致 -->
-    <servlet-class>servlet.Regist</servlet-class><!-- 具体路径 -->
+    <servlet-name>regist</servlet-name>
+    <servlet-class>servlet.Regist</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>regist</servlet-name><!-- 名字和上面name保持一致 -->
-    <url-pattern>/regist</url-pattern><!-- 请求路径，前端请求时的url -->
+    <servlet-name>regist</servlet-name>
+    <url-pattern>/regist</url-pattern>
   </servlet-mapping>
-  
-  <!-- 登陆servlet -->
   <servlet>
     <servlet-name>login</servlet-name>
     <servlet-class>servlet.Login</servlet-class>
@@ -25,9 +20,7 @@
     <servlet-name>login</servlet-name>
     <url-pattern>/login</url-pattern>
   </servlet-mapping>
-  
-  <!-- 新增课程 -->
-   <servlet>
+  <servlet>
     <servlet-name>Addcourse</servlet-name>
     <servlet-class>servlet.AddCourse</servlet-class>
   </servlet>
@@ -35,8 +28,7 @@
     <servlet-name>Addcourse</servlet-name>
     <url-pattern>/addCourse</url-pattern>
   </servlet-mapping>
-   <!-- 根据id查询课程 -->
-   <servlet>
+  <servlet>
     <servlet-name>SelCourse</servlet-name>
     <servlet-class>servlet.SelCourse</servlet-class>
   </servlet>
@@ -44,8 +36,7 @@
     <servlet-name>SelCourse</servlet-name>
     <url-pattern>/selCourse</url-pattern>
   </servlet-mapping>
-   <!-- 查询全部课程 -->
-   <servlet>
+  <servlet>
     <servlet-name>SelAllCourse</servlet-name>
     <servlet-class>servlet.SelAllCourse</servlet-class>
   </servlet>
@@ -53,13 +44,21 @@
     <servlet-name>SelAllCourse</servlet-name>
     <url-pattern>/selAllCourse</url-pattern>
   </servlet-mapping>
-   <!-- 修改课程状态 -->
-   <servlet>
+  <servlet>
     <servlet-name>ModifyCourse</servlet-name>
     <servlet-class>servlet.ModifyCourse</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ModifyCourse</servlet-name>
     <url-pattern>/modifyCourse</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>UserServlet</servlet-name>
+    <servlet-class>servlet.UserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserServlet</servlet-name>
+    <url-pattern>/userServlet</url-pattern>
   </servlet-mapping>
 </web-app>
