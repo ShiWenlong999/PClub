@@ -192,7 +192,7 @@
 //点击提交按钮触发方法
 function AddCourse(){
 	//获取到用户输入的每一项内容
-	var cname = $("#cname").val();
+	var cname = $("#cname").val(); //获取cname值,把cname输入的值赋值给了cname变量
 	var price = $("#price").val();
 	var teacher=$("#teacher").val();
 	var date =  $("#date").val();
@@ -207,9 +207,9 @@ function AddCourse(){
 	//添加课程，ajax发送到后台
 	$.ajax({
 		type:"POST",
-		url:"../addCourse",
+		url:"../addCourse", //退出本级目录，到servlet文件中
 		data:{cname:cname,price:price,teacher:teacher,date:date,desc1:desc1,desc2:desc2},                 
-		success:function(res){
+		success:function(res){       //请求成功返回调用的方法及返回的参数
 			if(res=="1"){
 				alert("新增课程成功！");
 				$("#cname").val("");  

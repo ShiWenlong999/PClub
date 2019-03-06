@@ -37,14 +37,14 @@ public class Login extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String account = request.getParameter("account");//获取前端请求的参数
+		String account = request.getParameter("account");//获取前端请求的参数。将前端发送过来的account赋值给account
 		String password = request.getParameter("password");
-		
-		LoginJdbc jj = new LoginJdbc();//创建LoginJdbc对象，为了用它的方法
+	//HttpServletRequest代表客户端的请求。HttpServletResponse对象代表服务器的响应。
+		LoginJdbc jj = new LoginJdbc();//创建LoginJdbc对象，为了用它的方法。servlet创建jdbc对象,为了能调用JDBC方法
 		String flag="0";
 		try {
-			flag = jj.login(account, password);
-			response.getWriter().write(flag);
+			flag = jj.login(account, password); //值赋给flag
+			response.getWriter().write(flag);   //将JDBC查询成功的值返回给前端。
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

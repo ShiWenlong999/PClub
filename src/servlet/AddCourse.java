@@ -38,7 +38,7 @@ public class AddCourse extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//获取前端发来的参数
-		String cname = request.getParameter("cname");
+		String cname = request.getParameter("cname"); //将前端发送过来的cname赋值给cname
 		String price = request.getParameter("price");
 		String teacher = request.getParameter("teacher");
 		String date = request.getParameter("date");
@@ -48,7 +48,7 @@ public class AddCourse extends HttpServlet {
 		Course course =new Course();
 		try {
 			String res = course.addCourse(cname, price, teacher, date, desc1, desc2);
-			response.getWriter().write(res);
+			response.getWriter().write(res); //将结果res返回给前端页面
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

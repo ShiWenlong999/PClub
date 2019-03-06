@@ -38,11 +38,11 @@ public class Regist extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setHeader("Content-type", "text/html;charset=UTF-8");//设置乱码
+		response.setHeader("Content-type", "text/html;charset=UTF-8");//处理乱码。因为使用Ajax传递中文参数，如果不对参数进行处理的话，传到后台会变成乱码
 		String username = request.getParameter("username");//获取请求参数
 		String password = request.getParameter("password");
 		String name = request.getParameter("name");
-		RegistJdbc rjdbc = new RegistJdbc();//创建对象
+		RegistJdbc rjdbc = new RegistJdbc();//创建JDBC对象，为了调用jdbc方法
 		//捕捉异常
 		try {
 			String flag = rjdbc.selUsername(username);//先去查询一遍数据库里有没有存在这个账号，0：没有，1：有
