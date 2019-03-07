@@ -41,6 +41,7 @@ public class SelAllCourse extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setHeader("Content-type", "text/html;charset=UTF-8");//设置乱码
 		//获取状态参数，
 		String state = request.getParameter("state");
 		//创建Course jdbc对象以便调用里面的对应的方法

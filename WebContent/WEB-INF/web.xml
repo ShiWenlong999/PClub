@@ -52,13 +52,21 @@
     <servlet-name>ModifyCourse</servlet-name>
     <url-pattern>/modifyCourse</url-pattern>
   </servlet-mapping>
-  
-   <servlet>
+  <servlet>
     <servlet-name>UserServlet</servlet-name>
     <servlet-class>servlet.UserServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>UserServlet</servlet-name>
     <url-pattern>/userServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>Cname</servlet-name>
+    <servlet-class>servlet.CnameServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Cname</servlet-name>
+    <url-pattern>/addCname</url-pattern>
   </servlet-mapping>
 </web-app>

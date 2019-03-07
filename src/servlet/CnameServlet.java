@@ -2,6 +2,8 @@ package servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,22 +11,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-
-import jdbc.Course;
-import pojo.CourseP;
+import jdbc.CnameJdbc;
 
 /**
- * Servlet implementation class SelCourse
+ * Servlet implementation class Cname
  */
-@WebServlet("/SelCourse")
-public class SelCourse extends HttpServlet {
+@WebServlet("/Cname")
+public class CnameServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SelCourse() {
+    public CnameServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,18 +39,21 @@ public class SelCourse extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setHeader("Content-type", "text/html;charset=UTF-8");//设置乱码
-		//获取状态参数，
-		String id = request.getParameter("id");
-		//创建Course jdbc对象以便调用里面的对应的方法
-		Course course = new Course();
-				
-		//创建Gson用于把对象转换成json对象，以便前端js可以解析返回结果
-		Gson gson = new Gson();
+		request.setCharacterEncoding("UTF-8");//解决ajax请求时中文参数乱码，
+		//获取到前端发来的报名请求，以及报名信息参数
+		String cname = request.getParameter("cname");
+		String uname = request.getParameter("uname");
+		String sex = request.getParameter("sex");
+		String age = request.getParameter("age");
+		String phone = request.getParameter("phone");
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
+       String date = df.format(new Date());// new Date()为获取当前系统时间为报名时间
+		//创建jdbc对象，调用其中的方法
+		CnameJdbc cnameJdbc = new CnameJdbc();
+		
 		try {
-			//调用course中查询数据库方法获取查询结果，并把结果返回到前端
-			CourseP courseP = course.getCourseById(id);
-			response.getWriter().write(gson.toJson(courseP));//括号中意思：用Gson把课程对象转换成json对象
+			String res = cnameJdbc.addCname(uname, cname, sex, age, phone,date);
+			response.getWriter().write(res);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
