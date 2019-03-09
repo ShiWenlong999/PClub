@@ -102,12 +102,47 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h1 class="page-header">
-                            主题 <small>副标题</small>
+                            下架课程<small></small>
                         </h1>
                     </div>
                 </div>
                 <!-- /. ROW  -->
+						<div class="col-md-8 col-sm-12 col-xs-12">
 
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                               正在售卖的课程
+                            </div> 
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>编号</th>
+                                                <th>课程名称</th>
+                                                <th>指导老师</th>
+                                                <th>价格</th>
+                                                <th>操作</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tbd">
+                                           <!--  <tr>
+                                                <td>1</td>
+                                                <td>John</td>
+                                                <td>Doe</td>
+                                                <td>John15482</td>
+                                                <td>name@site.com</td>
+                                            </tr>
+                                             -->
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
                
                 <!-- /. ROW  -->
             </div>
@@ -128,7 +163,46 @@
     <script src="../assets/js/morris/morris.js"></script>
     <!-- Custom Js -->
     <script src="../assets/js/custom-scripts.js"></script>
-
+	<script type="text/javascript">
+			getCourse();
+			//获取所有未下架课程
+			function getCourse(){
+				$.ajax({
+					type:"POST",
+					url:"../selAllCourse", //退出本级目录，到上级目录寻找servlet文件中
+					data:{state:"1"}, //参数：查询状态为1的课程     
+					dataType:"json",//返回的格式为json格式
+					success:function(res){  
+							var tt = "";
+							//循环结果，将加过拼接到页面表格中
+							for(var i=0;i<res.length;i++){
+								//一下代码就是页面表格的一行，
+								tt+="<tr><td>"+(i+1)+"</td><td>"+res[i].course_name+"</td><td>"+res[i].teacher+"</td><td>"+res[i].price+"</td><td> <a href='javascript:stopCourse("+res[i].id+")'  class='btn btn-primary'>下架</a></td></tr>";
+							}
+							//循环结束将拼好的表格放在页面中
+							$("#tbd").html(tt);
+						}
+					});
+			}
+			//下架课程
+			function stopCourse(id){
+				var bool = confirm("确定要下架该课程吗？");
+				if(bool==true){
+					//确定下架，通过ajax请求后台下架方法，修改该课程的状态字段
+					$.ajax({
+						type:"POST",
+						url:"../modifyCourse", //退出本级目录，到上级目录寻找servlet文件中
+						data:{id:id,state:"0"}, //参数：改变id课程的状态为0，    
+						success:function(res){  
+							if(res=="1"){
+								alert("已经下架了该课程！");
+								getCourse();//调用查询方法，目的：刷新表格
+							}
+						}
+					});
+				}
+			}
+	</script>
 
 </body>
 

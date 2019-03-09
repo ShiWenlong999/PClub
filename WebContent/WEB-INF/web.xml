@@ -60,7 +60,6 @@
     <servlet-name>UserServlet</servlet-name>
     <url-pattern>/userServlet</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>Cname</servlet-name>
     <servlet-class>servlet.CnameServlet</servlet-class>
@@ -68,5 +67,29 @@
   <servlet-mapping>
     <servlet-name>Cname</servlet-name>
     <url-pattern>/addCname</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AddAdvice</servlet-name>
+    <servlet-class>servlet.AddAdvice</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddAdvice</servlet-name>
+    <url-pattern>/addAdvice</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>SelAdvice</servlet-name>
+    <servlet-class>servlet.SelAdvice</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelAdvice</servlet-name>
+    <url-pattern>/selAdvice</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>SelCname</servlet-name>
+    <servlet-class>servlet.SelCname</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelCname</servlet-name>
+    <url-pattern>/selCname</url-pattern>
   </servlet-mapping>
 </web-app>
