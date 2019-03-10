@@ -45,4 +45,15 @@ public class LoginJdbc {
 		return user;
 	}
 	
+	//修改用户密码
+	public String setPass(String userName,String newPass) throws SQLException {
+		//利用jdbc工具得到connection
+		Connection conn = JdbcUtils.getConnection();
+		//获取statement
+		Statement stat = conn.createStatement();
+		//利用statement执行sql语句
+		int res = stat.executeUpdate("UPDATE  user SET password='"+newPass+"' WHERE phone='"+userName+"'");
+		return ""+res;
+	}
+	
 }

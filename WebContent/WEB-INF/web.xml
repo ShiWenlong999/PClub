@@ -76,7 +76,7 @@
     <servlet-name>AddAdvice</servlet-name>
     <url-pattern>/addAdvice</url-pattern>
   </servlet-mapping>
-   <servlet>
+  <servlet>
     <servlet-name>SelAdvice</servlet-name>
     <servlet-class>servlet.SelAdvice</servlet-class>
   </servlet>
@@ -84,12 +84,21 @@
     <servlet-name>SelAdvice</servlet-name>
     <url-pattern>/selAdvice</url-pattern>
   </servlet-mapping>
-   <servlet>
+  <servlet>
     <servlet-name>SelCname</servlet-name>
     <servlet-class>servlet.SelCname</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>SelCname</servlet-name>
     <url-pattern>/selCname</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>SetPass</servlet-name>
+    <servlet-class>servlet.SetPass</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SetPass</servlet-name>
+    <url-pattern>/setPass</url-pattern>
   </servlet-mapping>
 </web-app>
