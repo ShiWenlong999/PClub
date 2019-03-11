@@ -35,7 +35,7 @@ public class LoginJdbc {
 				//创建User对象
 				User user = new User();
 				while(rs.next()) {
-					user.setId(Integer.parseInt(rs.getString("id")));
+					user.setId(Integer.parseInt(rs.getString("id"))); //将数据库查出的id字段的值赋给user对象的id属性
 					user.setName(rs.getString("name"));
 					//user.setAge(Integer.parseInt(rs.getString("age")));
 					user.setPhone(rs.getString("phone"));

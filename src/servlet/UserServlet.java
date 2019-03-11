@@ -43,10 +43,10 @@ public class UserServlet extends HttpServlet {
 		String account = request.getParameter("account");//获取前端请求的参数
 		response.setHeader("Content-type", "text/html;charset=UTF-8");//设置乱码
 		LoginJdbc jj = new LoginJdbc();//创建LoginJdbc对象，为了用它的方法
-		User user = new User();//创建用户User对象，用于jdbc返回的user对象赋给它，然后转成json格式发送前端
+		
 		Gson gson = new Gson();//用于转换json
 		try {
-			user = jj.getUserBya(account);
+			User user  = jj.getUserBya(account);//通过jdbc方法获取到用户user对象
 			response.getWriter().write(gson.toJson(user));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
