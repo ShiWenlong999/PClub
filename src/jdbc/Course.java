@@ -39,7 +39,7 @@ public class Course {
       //循环结果集，把每数据赋给课程对象，然后将课程对象放在集合里，循环执行
         List<CourseP> list = new ArrayList<CourseP>();
 		while(rs.next()) {//循环每一条数据
-			CourseP courseP = new CourseP();//创建对象
+			CourseP courseP =  new CourseP();//创建对象
 			
 				//把每条数据的具体属性（字段）赋给对象中的对应属性
 				courseP.setId(Integer.parseInt(rs.getString("id")));
