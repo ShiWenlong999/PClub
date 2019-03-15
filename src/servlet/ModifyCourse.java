@@ -44,7 +44,7 @@ public class ModifyCourse extends HttpServlet {
 		Course course = new Course();
 		
 		try {
-			String res = course.modify(id, state);//传参数，掉方法，返回结果
+			String res = course.modify(id, state);//调用modify方法，传括号里面的两个参数，从jdbc返回的结果给res
 			response.getWriter().write(res);//将结果送回前端
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

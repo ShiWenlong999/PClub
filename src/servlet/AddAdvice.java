@@ -46,12 +46,14 @@ public class AddAdvice extends HttpServlet {
 		//创建Advice JDBC对象
 		AdviceJdbc advJdbc = new AdviceJdbc();
 		//调用JDBC的方法，添加意见
-		try {
-			advJdbc.addAdvice(username, adv, contact);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
+			try {
+				advJdbc.addAdvice(username, adv, contact);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
 	}
 
 }

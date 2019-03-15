@@ -37,7 +37,7 @@ public class AdviceJdbc {
 					Advice advice = new Advice();//创建对象
 					
 					//把每条数据的具体属性（字段）赋给对象中的对应属性
-					advice.setUsername(rs.getString("username"));
+					advice.setUsername(rs.getString("username"));  //数据库里面的username字段给了advice对象username属性
 					advice.setAdv(rs.getString("adv"));
 					advice.setContant(rs.getString("contant"));;
 					

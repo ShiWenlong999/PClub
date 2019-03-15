@@ -171,7 +171,7 @@
 		$.ajax({
 			type:"POST",
 			url:"../selAllCourse", //退出本级目录，到上级目录寻找servlet文件中
-			data:{state:"0"}, //参数：查询状态为1的课程     
+			data:{state:"0"}, //参数：查询状态为0的课程     
 			dataType:"json",//返回的格式为json格式
 			success:function(res){  
 					var tt = "";
@@ -189,11 +189,11 @@
 	function stopCourse(id){
 		var bool = confirm("确定要激活该课程吗？");
 		if(bool==true){
-			//确定下架，通过ajax请求后台下架方法，修改该课程的状态字段
+			//确定激活，通过ajax请求后台下架方法，修改该课程的状态字段
 			$.ajax({
 				type:"POST",
 				url:"../modifyCourse", //退出本级目录，到上级目录寻找servlet文件中
-				data:{id:id,state:"1"}, //参数：改变id课程的状态为0，    
+				data:{id:id,state:"1"}, //参数：改变id课程的状态为1，    
 				success:function(res){  
 					if(res=="1"){
 						alert("已经激活该课程！");

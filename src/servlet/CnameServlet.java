@@ -53,6 +53,7 @@ public class CnameServlet extends HttpServlet {
 		
 		try {
 			String res = cnameJdbc.addCname(uname, cname, sex, age, phone,date);
+			//这个是调用cnameJdBC里的addCname方法，括号里传入参数，然后执行这个方法，执行完把返回的结果赋给res
 			response.getWriter().write(res);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

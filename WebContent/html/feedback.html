@@ -102,7 +102,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h1 class="page-header">
-                            主题 <small>副标题</small>
+                            意见反馈<small></small>
                         </h1>
                     </div>
                 </div>
@@ -164,7 +164,7 @@
 			$.ajax({
 				type:"POST",
 				url:"../selAdvice", //退出本级目录，到上级目录寻找servlet文件中
-				data:{}, //参数：没有参数
+				data:{}, //参数：没有参数。因为查询所有
 				dataType:"json",//返回的格式为json格式
 				success:function(res){  
 						var tt = "";

@@ -41,8 +41,8 @@ public class SelAllCourse extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setHeader("Content-type", "text/html;charset=UTF-8");//设置乱码
-		//获取状态参数，
+		response.setHeader("Content-type", "text/html;charset=UTF-8");//设置乱码。传递中文参数，如果不对参数进行处理的话，传到前端会变成乱码
+		//获取状态参数，state=1上架，state=0下架
 		String state = request.getParameter("state");
 		//创建Course jdbc对象以便调用里面的对应的方法
 		Course course = new Course();
@@ -51,7 +51,7 @@ public class SelAllCourse extends HttpServlet {
 		Gson gson = new Gson();
 		try {
 			//调用course中查询数据库方法获取查询结果，并把结果返回到前端
-			List<CourseP> list = course.selCourse(state);
+			List<CourseP> list = course.selCourse(state); //List<CourseP>是放课程对象的集合
 			response.getWriter().write(gson.toJson(list));//括号中意思：用Gson把集合转换成json对象
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
