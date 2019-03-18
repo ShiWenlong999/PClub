@@ -14,7 +14,7 @@
     <!-- Custom Styles-->
     <link href="../assets/css/custom-styles.css" rel="stylesheet" />
     <!-- Google Fonts-->
-    <link href='http://fonts.useso.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+   <!--  <link href='http://fonts.useso.com/css?family=Open+Sans' rel='stylesheet' type='text/css' /> -->
 </head>
 
 <body>
@@ -103,12 +103,75 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h1 class="page-header">
-                            主题 <small>副标题</small>
+                            新增赛程<small></small>
                         </h1>
                     </div>
                 </div>
                 <!-- /. ROW  -->
-
+					<div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            请输入新增赛程的信息
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <form role="form">
+                                        <div class="form-group">
+                                            <label>赛程名称</label><font color="red" >*</font>
+                                            <input id="sname" class="form-control" placeholder="请填入赛程名称，不要超过十个字">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>报名费</label><font color="red">*</font>
+                                            <input id="price" class="form-control" placeholder="请填入报名费">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>比赛时间</label><font color="red">*</font>
+                                            <input id="date" class="form-control" placeholder="请填入比赛时间">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>奖品设置</label>
+                                            <input id="prize" class="form-control" placeholder="请填入奖品的设置">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>赞助商</label>
+                                            <input id="sponsor" class="form-control" placeholder="请填入赞助商">
+                                        </div>
+                                        
+               						</form>
+               					</div>
+               					<!-- ============右侧部分============ -->
+               					<div class="col-lg-6">
+                                    <form role="form">
+                                       <div class="form-group">
+                                            <label>比赛宣传语</label>
+                                            <input id="desc1" class="form-control" rows="3"></input>
+                                        </div>
+                                         <div class="form-group">
+                                            <label>比赛简介</label>
+                                            <textarea id="desc2" class="form-control" rows="3"></textarea>
+                                        </div>
+                                        <!-- <div class="form-group">
+                                            <label>图片1</label>
+                                            <input class="form-control" placeholder="请填入第一张图片的名称">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>图片2</label>
+                                            <input class="form-control" placeholder="请填入第二张图片的名称">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>图片3</label>
+                                            <input class="form-control" placeholder="请填入第二张图片的名称">
+                                        </div> -->
+               						</form>
+               					 <a href="javascript:addSchedule()" style="float: right;" class="btn btn-primary">提交新增</a>
+               					</div>
+               				</div>
+               			</div>
+               		</div>
+               	</div>
+              </div>
                
                 <!-- /. ROW  -->
             </div>
@@ -129,7 +192,42 @@
     <script src="../assets/js/morris/morris.js"></script>
     <!-- Custom Js -->
     <script src="../assets/js/custom-scripts.js"></script>
-
+	<script type="text/javascript">
+		
+	//新增赛程
+	function addSchedule(){
+		var sname = $("#sname").val();  //获取ID为sname的值，赋给sname变量
+		var price = $("#price").val();
+		var date  = $("#date").val();
+		var prize  = $("#prize").val();
+		var sponsor  = $("#sponsor").val();
+		var desc1 = $("#desc1").val();
+		var desc2  = $("#desc2").val();
+		
+		//通过ajax请求后台servlet,传入参数
+		 $.ajax({
+			type:"POST",
+			url:"../addSchedule", //退出本级目录，到servlet文件中
+			data:{sname:sname,price:price,date:date,prize:prize,sponsor:sponsor,desc1:desc1,desc2:desc2},                 
+			success:function(res){ 
+				if(res=="1"){
+					alert("新增赛程成功！");
+					$("#sname").val("");  //清空表格
+					$("#price").val("");  
+					$("#date").val("");
+					$("#prize").val("");   
+					$("#sponsor").val("");  
+					$("#desc1").val(""); 
+					$("#desc2").val("");
+				}else{
+					alert("新增失败，请重试。")
+				}
+			}
+		}); 
+		
+	}
+	
+	</script>
 
 </body>
 

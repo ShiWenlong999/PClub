@@ -92,13 +92,61 @@
     <servlet-name>SelCname</servlet-name>
     <url-pattern>/selCname</url-pattern>
   </servlet-mapping>
-  
-   <servlet>
+  <servlet>
     <servlet-name>SetPass</servlet-name>
     <servlet-class>servlet.SetPass</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>SetPass</servlet-name>
     <url-pattern>/setPass</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AddSchedule</servlet-name>
+    <servlet-class>servlet.AddSchedule</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddSchedule</servlet-name>
+    <url-pattern>/addSchedule</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>SelAllSchedule</servlet-name>
+    <servlet-class>servlet.SelAllSchedule</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelAllSchedule</servlet-name>
+    <url-pattern>/selAllSchedule</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ModifySchedule</servlet-name>
+    <servlet-class>servlet.ModifySchedule</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModifySchedule</servlet-name>
+    <url-pattern>/modifySchedule</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>SelSchedule</servlet-name>
+    <servlet-class>servlet.SelSchedule</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelSchedule</servlet-name>
+    <url-pattern>/selSchedule</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AddSname</servlet-name>
+    <servlet-class>servlet.AddSname</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddSname</servlet-name>
+    <url-pattern>/addSname</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>SelSname</servlet-name>
+    <servlet-class>servlet.SelSname</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelSname</servlet-name>
+    <url-pattern>/selSname</url-pattern>
   </servlet-mapping>
 </web-app>

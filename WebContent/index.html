@@ -193,6 +193,7 @@
 	<script type="text/javascript">
 		//查询课程赛程报名信息
 		getCname();
+		getSname();
 		//getSname();
 		function getCname(){
 				$.ajax({
@@ -213,7 +214,26 @@
 					});
 			
 		}
-		
+		//查询赛程报名的方法
+		function getSname(){
+			$.ajax({
+				type:"POST",
+				url:"selSname",
+				data:{}, //参数：没有参数
+				dataType:"json",//返回的格式为json格式
+				success:function(res){  
+					//console.log(res)
+						var tt = "";
+						//循环结果，将加过拼接到页面表格中
+						for(var i=0;i<res.length;i++){
+							//一下代码就是页面表格的一行，
+							tt+="<tr><td>"+res[i].schedulename+"</td><td>"+res[i].username+"</td><td>"+res[i].phone+"</td><td>"+res[i].age+"/"+res[i].sex+"</td><td>"+res[i].regdate+"</td></tr>";
+						}
+						//循环结束将拼好的表格放在页面中,tbd2是课程的
+						$("#tbd2").html(tt);
+					}
+				});
+		}
 	</script>
 </body>
 
