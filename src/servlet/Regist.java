@@ -39,6 +39,7 @@ public class Regist extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//HttpServletRequest代表客户端的请求。HttpServletResponse对象代表服务器的响应。
+		request.setCharacterEncoding("UTF-8");//解决ajax请求时中文参数乱码
 		response.setHeader("Content-type", "text/html;charset=UTF-8");//处理乱码。因为传递中文参数，如果不对参数进行处理的话，传到前端会变成乱码
 		String username = request.getParameter("username");//获取请求参数username，将前端发送过来的username赋值给username变量
 		String password = request.getParameter("password");
